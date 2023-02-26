@@ -1,14 +1,17 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@jridgewell/sourcemap-codec': ^1.4.14
   '@sveltejs/adapter-auto': ^2.0.0
   '@sveltejs/kit': ^1.5.0
+  '@types/evaluatex': ^2.2.4
   '@typescript-eslint/eslint-plugin': ^5.45.0
   '@typescript-eslint/parser': ^5.45.0
   autoprefixer: ^10.4.7
   eslint: ^8.28.0
   eslint-config-prettier: ^8.5.0
   eslint-plugin-svelte3: ^4.0.0
+  evaluatex: ^2.2.0
   mathjax: ^3.2.2
   postcss: ^8.4.14
   postcss-load-config: ^4.0.1
@@ -18,6 +21,7 @@ specifiers:
   svelte: ^3.54.0
   svelte-check: ^3.0.1
   svelte-katex: ^0.1.2
+  svelte-mathquill: ^0.4.1
   svelte-preprocess: ^4.10.7
   tailwindcss: ^3.1.5
   tslib: ^2.4.1
@@ -25,6 +29,8 @@ specifiers:
   vite: ^4.0.0
 
 dependencies:
+  '@jridgewell/sourcemap-codec': 1.4.14
+  evaluatex: 2.2.0
   mathjax: 3.2.2
   sorcery: 0.11.0
   svelte-katex: 0.1.2
@@ -32,6 +38,7 @@ dependencies:
 devDependencies:
   '@sveltejs/adapter-auto': 2.0.0_@sveltejs+kit@1.8.3
   '@sveltejs/kit': 1.8.3_svelte@3.55.1+vite@4.1.4
+  '@types/evaluatex': 2.2.4
   '@typescript-eslint/eslint-plugin': 5.53.0_ny4s7qc6yg74faf3d6xty2ofzy
   '@typescript-eslint/parser': 5.53.0_7kw3g6rralp5ps6mg3uyzz6azm
   autoprefixer: 10.4.13_postcss@8.4.21
@@ -44,6 +51,7 @@ devDependencies:
   prettier-plugin-svelte: 2.9.0_jrsxveqmsx2uadbqiuq74wlc4u
   svelte: 3.55.1
   svelte-check: 3.0.4_gqx7lw3sljhsd4bstor5m2aa2u
+  svelte-mathquill: 0.4.1
   svelte-preprocess: 4.10.7_b25a55hc532q56kmuqlrolam2i
   tailwindcss: 3.2.7_postcss@8.4.21
   tslib: 2.5.0
@@ -385,6 +393,10 @@ packages:
 
   /@types/cookie/0.5.1:
     resolution: {integrity: sha512-COUnqfB2+ckwXXSFInsFdOAWQzCCx+a5hq2ruyj+Vjund94RJQd4LG2u9hnvJrTgunKAaax7ancBYlDrNYxA0g==}
+    dev: true
+
+  /@types/evaluatex/2.2.4:
+    resolution: {integrity: sha512-cgdW2qe4LsJM5JOLYEhsXnjj86d8gRiyhfNvw5ZHxjzJ1FCtd0+flxLm1NlD5EodJv+SDAbUa0VVuI8Z4vxDww==}
     dev: true
 
   /@types/json-schema/7.0.11:
@@ -1005,6 +1017,10 @@ packages:
     resolution: {integrity: sha512-kVscqXk4OCp68SZ0dkgEKVi6/8ij300KBWTJq32P/dYeWTSwK41WyTxalN1eRmA5Z9UU/LX9D7FWSmV9SAYx6g==}
     engines: {node: '>=0.10.0'}
     dev: true
+
+  /evaluatex/2.2.0:
+    resolution: {integrity: sha512-QVtGvYTf9HvQyDjbBCwoDQPP9KMuVB56H8KalrkLsPPCQfngpVmkiIoxJ4FU/SVmlmhnbr/heOmP5VlbCTEJpg==}
+    dev: false
 
   /fast-deep-equal/3.1.3:
     resolution: {integrity: sha512-f3qQ9oQy9j2AhBe/H9VC91wLmKBCCU/gDOnKNAYG5hswO7BLKj09Hc5HYNz9cGI++xlpDCIgDaitVs03ATR84Q==}
@@ -1819,6 +1835,10 @@ packages:
     dependencies:
       katex: 0.15.6
     dev: false
+
+  /svelte-mathquill/0.4.1:
+    resolution: {integrity: sha512-G5TMNlYbNYJya4Wqj40m6hJrJhyMltbgO14V+uGyEvQUPXpc1Fe59XkJzt4YfXZ8tYdKSp8x6B2yA1kO/NaomQ==}
+    dev: true
 
   /svelte-preprocess/4.10.7_b25a55hc532q56kmuqlrolam2i:
     resolution: {integrity: sha512-sNPBnqYD6FnmdBrUmBCaqS00RyCsCpj2BG58A1JBswNF7b0OKviwxqVrOL/CKyJrLSClrSeqQv5BXNg2RUbPOw==}

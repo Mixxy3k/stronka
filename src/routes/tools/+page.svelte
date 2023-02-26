@@ -1,7 +1,9 @@
 <script lang="ts">
 	import Katex from 'svelte-katex';
+	import { MathQuill } from 'svelte-mathquill';
+	import evaluatex from 'evaluatex/dist/evaluatex';
 
-	let x = '';
+	let x = 'x^{2+3}';
 	let array: string[] = [];
 </script>
 
@@ -13,18 +15,15 @@
 		rel="noreferrer noopener">Dokumentacja</a
 	>
 </p>
-<!-- Teaxt area in dark mode to input x + Katex ouptut belowe-->
-<input
-	class="bg-gray-700 text-white w-1/2 p-2 rounded-lg mx-7"
-	type="text"
-	bind:value={x}
-	placeholder="x"
-/>
 
+<!-- Teaxt area in dark mode to input x + Katex ouptut belowe-->
+<MathQuill bind:latex={x} class="bg-gray-700 text-white w-1/2 p-2 rounded-lg mx-7" />
+{x}
 <button
 	class="bg-gray-600 text-white rounded-lg"
 	on:click={() => {
 		array = [...array, x];
+		console.log(array);
 	}}
 >
 	Dodaj
@@ -51,6 +50,13 @@
 
 <ul class="mx-8">
 	{#each array as item}
-		<li class="my-2"><Katex>{item}</Katex> &nbsp;&nbsp;&nbsp;&nbsp; {item}</li>
+		<li class="my-2">
+			<Katex>{item}</Katex> = {evaluatex(
+				item.replace('\\pi', 'PI'),
+				{ pi: 3.14 },
+				{ latex: true }
+			)()} &nbsp;&nbsp;&nbsp;&nbsp;
+			{item}
+		</li>
 	{/each}
 </ul>
