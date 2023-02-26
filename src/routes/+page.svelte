@@ -64,6 +64,7 @@
 
 	function displaySolution() {
 		shown = true;
+		show();
 	}
 </script>
 
@@ -76,7 +77,6 @@
 			bind:value={x}
 			on:input={setString}
 			on:input={roundCos}
-			on:input={show}
 			placeholder="x"
 		/>
 		<select
@@ -97,7 +97,6 @@
 			bind:value={y}
 			on:input={setString}
 			on:input={roundCos}
-			on:input={show}
 			placeholder="y"
 		/>
 		<button class="bg-gray-900 rounded-md px-4" on:click={displaySolution}>Licz</button>
