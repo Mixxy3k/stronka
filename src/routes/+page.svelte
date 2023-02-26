@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Katex from 'svelte-katex';
 	import evaluatex from 'evaluatex/dist/evaluatex';
+	let shown: boolean;
 
 	let x: number;
 	let y: number;
@@ -60,6 +61,11 @@
 		zString1 = zString.replace(`x`, x0.toString()).replace(`y`, y0.toString());
 		z = evaluatex(zString1, {}, { latex: true })();
 	}
+
+	function displaySolution() {
+		shown = true;
+		show();
+	}
 </script>
 
 <div class="bg-gray-800 p-4 rounded-lg my-3 mx-5">
@@ -71,7 +77,6 @@
 			bind:value={x}
 			on:input={setString}
 			on:input={roundCos}
-			on:input={show}
 			placeholder="x"
 		/>
 		<select
@@ -92,40 +97,42 @@
 			bind:value={y}
 			on:input={setString}
 			on:input={roundCos}
-			on:input={show}
 			placeholder="y"
 		/>
+		<button class="bg-gray-900 rounded-md px-4" on:click={displaySolution}>Licz</button>
 	</div>
 	<div class="flex flex-row mt-10 justify-center items-center text-2xl">
 		<span class="mx-1">Wyrażenie:</span><Katex>{KatexString}</Katex>
 	</div>
 </div>
 
-<!-- solver tab rounded-->
-<div class="bg-gray-800 p-4 rounded-lg my-3 mx-5">
-	<Katex>\varDelta f \approx df</Katex><br />
-	<Katex>f(x_0 + dx, y_0+dy) - f(x_0, y_0) \approx f_x(x_0, y_0)dx + f_y(x_0,y_0)dy</Katex><br />
-	<Katex>f(x_0 + dx, y_0+dy) \approx f(x_0, y_0) + f_x(x_0, y_0)dx + f_y(x_0,y_0)dy</Katex><br />
-</div>
-<div class="bg-gray-800 p-4 rounded-lg my-3 mx-5">
-	<Katex>z=f(x,y)={zString}</Katex><br />
-	<Katex>x_0={x0}</Katex>,
-	<Katex>y_0={y0}</Katex>,
-	<Katex>dx={dx}</Katex>,
-	<Katex>dy={dy}</Katex><br /><br />
-	Stąd mamy:<br />
+{#if shown}
+	<!-- solver tab rounded-->
+	<div class="bg-gray-800 p-4 rounded-lg my-3 mx-5">
+		<Katex>\varDelta f \approx df</Katex><br />
+		<Katex>f(x_0 + dx, y_0+dy) - f(x_0, y_0) \approx f_x(x_0, y_0)dx + f_y(x_0,y_0)dy</Katex><br />
+		<Katex>f(x_0 + dx, y_0+dy) \approx f(x_0, y_0) + f_x(x_0, y_0)dx + f_y(x_0,y_0)dy</Katex><br />
+	</div>
+	<div class="bg-gray-800 p-4 rounded-lg my-3 mx-5">
+		<Katex>z=f(x,y)={zString}</Katex><br />
+		<Katex>x_0={x0}</Katex>,
+		<Katex>y_0={y0}</Katex>,
+		<Katex>dx={dx}</Katex>,
+		<Katex>dy={dy}</Katex><br /><br />
+		Stąd mamy:<br />
 
-	<Katex>{KatexString}=f({x},{y})=f({x0}+{dx},{x0}+{dy})</Katex><br /><br />
-	Teraz korzystamy ze wzoru:<br />
-	<Katex>f(x_0+dx,y_0+dy) \approx f(x_0,y_0)+dz</Katex><br /><br />
-	Żeby obliczyć: <br />
+		<Katex>{KatexString}=f({x},{y})=f({x0}+{dx},{x0}+{dy})</Katex><br /><br />
+		Teraz korzystamy ze wzoru:<br />
+		<Katex>f(x_0+dx,y_0+dy) \approx f(x_0,y_0)+dz</Katex><br /><br />
+		Żeby obliczyć: <br />
 
-	<Katex>f(x_0,y_0)=f({x0},{y0})={zString1}={z}</Katex><br /><br />
+		<Katex>f(x_0,y_0)=f({x0},{y0})={zString1}={z}</Katex><br /><br />
 
-	<!--W tym miejscu trzeba policzyć dwie pochodne i potem podstawić pod wzory-->
-	Wyznaczamy wartość pochodnych cząstkowych w punkcie <Katex>(x_0,y_0)</Katex> <br />
-	<Katex>f'_x(x,y)=</Katex><br /><br />
+		<!--W tym miejscu trzeba policzyć dwie pochodne i potem podstawić pod wzory-->
+		Wyznaczamy wartość pochodnych cząstkowych w punkcie <Katex>(x_0,y_0)</Katex> <br />
+		<Katex>f'_x(x,y)=</Katex><br /><br />
 
-	Obliczamy różniczkę zupełną:<br />
-	<Katex>dz=f'_x(x_0,y_0)dx+f'_y(x_0,y_0)dy=</Katex>
-</div>
+		Obliczamy różniczkę zupełną:<br />
+		<Katex>dz=f'_x(x_0,y_0)dx+f'_y(x_0,y_0)dy=</Katex>
+	</div>
+{/if}
